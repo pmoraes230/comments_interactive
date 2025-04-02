@@ -10,18 +10,6 @@
 </head>
 <body>
     <div class="comments-section">
-        {% for perfil in perfis %}
-        <div class="add-comment">
-            <div class="add-comment-header">
-                <img src="{{ perfil.foto_perfil.url }}" alt="Avatar" class="avatar">
-            </div>
-            <div class="add-comment-body">
-                <textarea id="new-comment" placeholder="Add a comment..." style="resize: none;"></textarea>
-            </div>
-            <button class="send-btn" id="send-comment">SEND</button>
-        </div>
-        {% endfor %}
-
         {% for comentario in comentarios %}
             <div class="comment">
                 <div class="commets_layout">
@@ -88,6 +76,15 @@
         {% endfor %}
 
         <!-- Adicionar Comentário -->
+        <div class="add-comment">
+            <div class="add-comment-header">
+                <img src="{% static 'images/avatars/image-maxblagun.webp' %}" alt="Avatar" class="avatar">
+            </div>
+            <div class="add-comment-body">
+                <textarea id="new-comment" placeholder="Add a comment..." style="resize: none;"></textarea>
+            </div>
+            <button class="send-btn" id="send-comment">SEND</button>
+        </div>
     </div>
 
     <script src="{% static 'scripts/comments.js' %}"></script>

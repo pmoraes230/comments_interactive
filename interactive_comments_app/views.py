@@ -5,7 +5,7 @@ import json
 from .models import Comentario, Resposta, Perfil, Like
 
 def main(request):
-    comments = Comentario.objects.all().order_by('-data')
+    comments = Comentario.objects.all().order_by('data')
     perfils = Perfil.objects.all()
     return render(request, 'index.html', {'comentarios': comments, 'perfis': perfils})
 
