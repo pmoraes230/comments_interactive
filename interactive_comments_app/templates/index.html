@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style/style.css' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon-32x32.png' %}">
+    <title>Interactive Comments Section</title>
+</head>
+<body>
+    <div class="comments-section">
+        {% for comentario in comentarios %}
+            <div class="comment">
+                <div class="commets_layout">
+                    <div class="comment-header">
+                        <img src="{{ comentario.perfil.foto_perfil.url }}" alt="Avatar" class="avatar">
+                        <div class="user-info">
+                            <span class="username">{{ comentario.nome }}</span>
+                            <span class="timestamp">{{ comentario.data|timesince }} ago</span>
+                        </div>
+                        <button class="reply-btn" data-comment-id="{{ comentario.id }}">
+                            <img src="{% static 'images/icon-reply.svg' %}" alt="reply">Reply
+                        </button>
+                    </div>
+                    <div class="comment-body">
+                        <p>{{ comentario.comentario }}</p>
+                    </div>
+                </div>
+                <div class="comment-footer">
+                    <div class="likes">
+                        <button class="like-btn" data-comment-id="{{ comentario.id }}" data-action="like">
+                            <img src="{% static 'images/icon-plus.svg' %}" alt="icon">
+                        </button>
+                        <span class="like-count">{{ comentario.likes.count }}</span>
+                        <button class="like-btn" data-comment-id="{{ comentario.id }}" data-action="dislike">
+                            <img src="{% static 'images/icon-minus.svg' %}" alt="icon">
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Respostas -->
+            <div class="reply">
+                {% for resposta in comentario.respostas.all %}
+                    <div class="comment">
+                        <div class="commets_layout">
+                            <div class="comment-header">
+                                <img src="{{ resposta.perfil.foto_perfil.url }}" alt="Avatar" class="avatar">
+                                <div class="user-info">
+                                    <span class="username">{{ resposta.nome }}</span>
+                                    <span class="timestamp">{{ resposta.data|timesince }} ago</span>
+                                </div>
+                                <button class="reply-btn" data-comment-id="{{ resposta.comentario.id }}">
+                                    <img src="{% static 'images/icon-reply.svg' %}" alt="reply">Reply
+                                </button>
+                            </div>
+                            <div class="comment-body">
+                                <p><span class="mention">@{{ resposta.comentario.nome }}</span> {{ resposta.resposta }}</p>
+                            </div>
+                        </div>
+                        <div class="comment-footer">
+                            <div class="likes">
+                                <button class="like-btn" data-reply-id="{{ resposta.id }}" data-action="like">
+                                    <img src="{% static 'images/icon-plus.svg' %}" alt="icon">
+                                </button>
+                                <span class="like-count">{{ resposta.likes.count }}</span>
+                                <button class="like-btn" data-reply-id="{{ resposta.id }}" data-action="dislike">
+                                    <img src="{% static 'images/icon-minus.svg' %}" alt="icon">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+        <!-- Adicionar Comentário -->
+        <div class="add-comment">
+            <div class="add-comment-header">
+                <img src="{% static 'images/avatars/image-juliusomo.webp' %}" alt="Avatar" class="avatar">
+            </div>
+            <div class="add-comment-body">
+                <textarea id="new-comment" placeholder="Add a comment..." style="resize: none;"></textarea>
+            </div>
+            <button class="send-btn" id="send-comment">SEND</button>
+        </div>
+    </div>
+
+    <script src="{% static 'scripts/comments.js' %}"></script>
+</body>
+</html>

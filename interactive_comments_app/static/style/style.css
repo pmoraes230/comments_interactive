@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Rubik", sans-serif;
+}
+
+body {
+    background-color: #f5f6fa;
+    padding: 20px;
+    line-height: 1.6;
+    color: hsl(211, 10%, 45%);
+}
+
+.comments-section {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.comment {
+    padding: 1rem;
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.commets_layout {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    flex: 1;
+}
+
+.comment-header {
+    display: flex;
+    margin-bottom: 1rem;
+    align-items: center;
+    gap: 10px;
+}
+
+.comment-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-info {
+    margin-right: auto;
+}
+
+.username {
+    font-weight: bold;
+    color: hsl(212, 24%, 26%);
+    margin-right: 10px;
+}
+
+.timestamp {
+    font-size: 0.85rem;
+    color: hsl(211, 10%, 65%);
+}
+
+.comment-body {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+.reply-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background-color: hsl(0, 0%, 100%);
+    color: hsl(238, 40%, 52%);
+    border: 1px solid hsl(223, 19%, 93%);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.reply-btn:hover {
+    background-color: hsl(238, 40%, 52%);
+    color: hsl(0, 0%, 100%);
+}
+
+.reply-btn img {
+    height: 13px;
+    width: auto;
+}
+
+.comment-footer {
+    text-align: center;
+    color: hsl(238, 40%, 52%);
+    font-weight: bold;
+}
+
+.likes {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: hsl(228, 33%, 97%);
+    padding: 3px;
+}
+
+.comment-footer p {
+    padding: 1rem;
+    color: hsl(211, 10%, 45%);
+}
+
+.comment-footer button {
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: hsl(228, 33%, 97%);
+    transition: background-color 0.3s;
+}
+
+.comment-footer button:hover {
+    background-color: hsl(238, 40%, 52%);
+    color: hsl(0, 0%, 100%);
+}
+
+.mention {
+    color: hsl(238, 40%, 52%);
+    font-weight: bold;
+}
+
+.reply {
+    margin-left: 3rem;
+    border-left: 2px solid hsl(223, 19%, 93%);
+    padding-left: 1.5rem;
+}
+
+.add-comment {
+    display: flex;
+    background-color: hsl(0, 0%, 100%);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.add-comment-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1rem;
+}
+
+.add-comment-body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+}
+
+.add-comment-body textarea {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid hsl(223, 19%, 93%);
+    font-size: 0.9rem;
+    color: hsl(211, 10%, 45%);
+    resize: none;
+    transition: border-color 0.3s;
+}
+
+.add-comment-body textarea:focus {
+    outline: none;
+    border: 1px solid hsl(238, 40%, 52%);
+}
+
+.send-btn {
+    background-color: hsl(238, 40%, 52%);
+    color: hsl(0, 0%, 100%);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-left: 1rem;
+    transition: background-color 0.3s;
+}
+
+.send-btn:hover {
+    background-color: hsl(238, 40%, 62%);
+}
