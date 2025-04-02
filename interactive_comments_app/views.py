@@ -7,6 +7,9 @@ from .models import Comentario, Resposta, Perfil, Like
 def main(request):
     comments = Comentario.objects.all().order_by('data')
     perfils = Perfil.objects.all()
+    if not perfils.exists():
+        perfil = Perfil.objects.create(nome='Nome do Usuário', foto_perfil='caminho/para/imagem.jpg')
+        perfils = Perfil.objects.all()
     return render(request, 'index.html', {'comentarios': comments, 'perfis': perfils})
 
 @csrf_exempt
@@ -65,3 +68,46 @@ def like(request):
 
         return JsonResponse({'success': True, 'new_count': new_count})
     return JsonResponse({'success': False})
+
+@csrf_exempt
+def delete_comment(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        comentario_id = data.get('comentario_id')
+        try:
+            comentario = Resposta.objects.get(id=comentario_id)
+            perfil = Perfil.objects.first()  
+            if comentario.perfil != perfil:
+                return JsonResponse({'success': False, 'error': 'Você não tem permissão para excluir este comentário'})
+            Comentario.objects.filter(comentario=comentario).delete()
+            comentario.delete()
+            return JsonResponse({'success': True})
+        except Comentario.DoesNotExist:
+            return JsonResponse({'success': False, 'error': 'Comentário não encontrado'})
+    return JsonResponse({'success': False, 'error': 'Método inválido'})
+        
+@csrf_exempt
+def edit_comment(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            comentario_id = data.get('comentario_id')
+            novo_texto = data.get('novo_texto')
+
+            # Verificar se os dados são válidos
+            if not comentario_id or not novo_texto.strip():
+                return JsonResponse({'success': False, 'error': 'Dados inválidos'})
+
+            # Buscar o comentário no banco de dados
+            comentario = Resposta.objects.get(id=comentario_id)
+
+            # Atualizar o comentário
+            comentario.resposta = novo_texto
+            comentario.save()
+
+            return JsonResponse({'success': True})
+        except Comentario.DoesNotExist:
+            return JsonResponse({'success': False, 'error': 'Comentário não encontrado'})
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': 'Erro inesperado'})
+    return JsonResponse({'success': False, 'error': 'Método inválido'})

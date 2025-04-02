@@ -29,6 +29,7 @@ body {
     align-items: center;
     margin-bottom: 1.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 675px;
 }
 
 .commets_layout {
@@ -72,6 +73,13 @@ body {
     margin-bottom: 1rem;
     line-height: 1.5;
     word-wrap: break-word;
+}
+
+.btn_actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
 }
 
 .reply-btn {
@@ -123,6 +131,32 @@ body {
 
 .delete-btn:hover {
     background-color: hsl(359, 21%, 43%);
+    color: hsl(0, 0%, 100%);
+}
+
+.edit-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background-color: hsl(0, 0%, 100%);
+    color: hsl(238, 40%, 52%);
+    border: 1px solid hsl(223, 19%, 93%);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.edit-btn img {
+    height: 13px;
+    width: auto;
+}
+
+.edit-btn:hover {
+    background-color: hsl(238, 20%, 71%);
     color: hsl(0, 0%, 100%);
 }
 
@@ -227,4 +261,79 @@ body {
 
 .send-btn:hover {
     background-color: hsl(238, 40%, 62%);
+}
+
+.edit-textarea {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid hsl(223, 19%, 93%);
+    font-size: 0.9rem;
+    color: hsl(211, 10%, 45%);
+    transition: border-color 0.3s;
+}
+
+.save-edit-btn {
+    background-color: hsl(238, 40%, 52%);
+    color: hsl(0, 0%, 100%);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-left: 1rem;
+    transition: background-color 0.3s;
+}
+
+.cancel-edit-btn {
+    background-color: hsl(358, 79%, 66%);
+    color: hsl(0, 0%, 100%);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-left: 1rem;
+    transition: background-color 0.3s;
+}
+
+@media (max-width: 768px) {
+    .comment {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .comment-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .comment-header img {
+        margin-bottom: 1rem;
+    }
+    .user-info {
+        margin-right: 0;
+    }
+    .add-comment-body {
+        width: 100%;
+    }
+    .reply {
+        margin-left: 1rem;
+    }
+    .comment-header {
+        margin-bottom: 0.5rem;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .btn_actions {
+        align-items: flex-start;
+        gap: 5px;
+    }
+    .likes {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
 }
