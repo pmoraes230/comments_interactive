@@ -51,8 +51,11 @@
                                     <span class="username">{{ resposta.nome }}</span>
                                     <span class="timestamp">{{ resposta.data|timesince }} ago</span>
                                 </div>
+                                <button class="delete-btn" data-comment-id="{{ resposta.comentario.id }}">
+                                    <img src="{% static 'images/icon-delete.svg' %}" alt="reply">Delete
+                                </button>
                                 <button class="reply-btn" data-comment-id="{{ resposta.comentario.id }}">
-                                    <img src="{% static 'images/icon-reply.svg' %}" alt="reply">Reply
+                                    <img src="{% static 'images/icon-edit.svg' %}" alt="reply">Edit
                                 </button>
                             </div>
                             <div class="comment-body">
