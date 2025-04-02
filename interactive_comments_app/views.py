@@ -6,7 +6,8 @@ from .models import Comentario, Resposta, Perfil, Like
 
 def main(request):
     comments = Comentario.objects.all().order_by('-data')
-    return render(request, 'index.html', {'comentarios': comments})
+    perfils = Perfil.objects.all()
+    return render(request, 'index.html', {'comentarios': comments, 'perfis': perfils})
 
 @csrf_exempt
 def add_comment(request):
